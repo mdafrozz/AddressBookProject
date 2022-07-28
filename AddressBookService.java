@@ -12,7 +12,6 @@ import java.util.Scanner;
  *
  */
 public class AddressBookService implements IPerson {
-
 	String firstName, lastName, email, address, city, state;
 	long phoneNo, zipCode;
 	List<Person> personList;
@@ -22,6 +21,7 @@ public class AddressBookService implements IPerson {
 		this.personList = new ArrayList<Person>();
 	}
 
+	// Add Contact
 	public void addPerson() {
 		System.out.println("-------------- Add New Contact --------------");
 		int i = 0;
@@ -54,6 +54,7 @@ public class AddressBookService implements IPerson {
 		System.out.println("Contact added successfully...");
 	}
 
+	// Edit Contact
 	public void editPerson() {
 		System.out.println("-------------- Edit Contact --------------");
 		int i = 0;
@@ -140,6 +141,7 @@ public class AddressBookService implements IPerson {
 
 	}
 
+	// Delete Contact
 	public void deletePerson() {
 		System.out.println("-------------- Delete Contact --------------");
 		if (personList.isEmpty()) {
@@ -157,11 +159,13 @@ public class AddressBookService implements IPerson {
 
 	}
 
+	// check duplicate entry
 	public boolean checkExists(String firstName) {
 		int flag = personList.stream().anyMatch(p -> p.getFname().equalsIgnoreCase(firstName)) ? 1 : 0;
 		return flag == 1;
 	}
 
+	// search contacts by city or state
 	public void searchInContacts() {
 		int i = 0;
 		SearchByStateOrCity search = new SearchByStateOrCity();
@@ -192,6 +196,29 @@ public class AddressBookService implements IPerson {
 		}
 	}
 
+	// viewContactsByCityOrState
+	public void viewContactsByCityOrState() {
+		if (personList.isEmpty()) {
+			System.out.println("No Records!!!");
+		} else {
+			System.out.println("Enter city name: ");
+			String city = sc.next();
+			System.out.println("Enter state name");
+			String state = sc.next();
+
+			for (Person person : personList) {
+				if (city.equalsIgnoreCase(person.getCity()) || state.equalsIgnoreCase(person.getState())) {
+					System.out.println("View persons contact by searching city or state :");
+					System.out.println(person);
+				} else {
+					System.out.println("No such a records in adddressbook");
+				}
+			}
+		}
+
+	}
+
+	// showAllContacts
 	public void showAllContacts() {
 		System.out.println("-------------- Show All Contacts --------------");
 		if (personList.isEmpty()) {
@@ -202,4 +229,5 @@ public class AddressBookService implements IPerson {
 			}
 		}
 	}
+
 }

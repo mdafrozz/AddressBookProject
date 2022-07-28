@@ -4,6 +4,7 @@
 package com.bridgelabz.java;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,7 +13,10 @@ import java.util.Scanner;
  *
  */
 public class SearchByStateOrCity {
-	static Scanner sc ;
+
+	static Scanner sc;
+	public HashMap<String, AddressBookService> addressBook;
+
 	public void searchByState(List<Person> person) {
 		int flag = 0;
 		sc = new Scanner(System.in);
@@ -28,7 +32,7 @@ public class SearchByStateOrCity {
 		}
 
 		if (flag == 1) {
-			System.out.println("List of persons in the state are: ");
+			System.out.println("List of persons in the required state are: ");
 			for (Person p : matches) {
 				System.out.println(p);
 			}
@@ -36,8 +40,7 @@ public class SearchByStateOrCity {
 			System.out.println("No persons with is state.!!!");
 		}
 	}
-	
-	
+
 	public void searchByCity(List<Person> person) {
 		int flag = 0;
 		sc = new Scanner(System.in);
@@ -53,7 +56,7 @@ public class SearchByStateOrCity {
 		}
 
 		if (flag == 1) {
-			System.out.println("List of persons in the city are: ");
+			System.out.println("List of persons in the required city are: ");
 			for (Person p : matches) {
 				System.out.println(p);
 			}
