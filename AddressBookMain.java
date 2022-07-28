@@ -10,6 +10,7 @@ package com.bridgelabz.java;
 public class AddressBookMain {
 	public static void main(String[] args) {
 		System.out.println("************ Welcome to Address Book System ************");
-
+		AddressBookService service = new AddressBookService();
+		service.addPerson();
 	}
 }
