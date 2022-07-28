@@ -11,7 +11,7 @@ public class Person {
 	private String fname, lname, address, city, state;
 	private long phone, zip;
 
-	public Person(String fname, String lname, String address, String city, String state, long phone, long zip) {
+	public Person(String fname, String lname, String email, String address, String state, String city, long phone, long zip) {
 		super();
 		this.fname = fname;
 		this.lname = lname;
