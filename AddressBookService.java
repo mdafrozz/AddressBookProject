@@ -5,6 +5,7 @@ package com.bridgelabz.java;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * @author MD_AFROZ
@@ -15,6 +16,7 @@ public class AddressBookService implements IPerson {
 	String firstName, lastName, email, address, city, state;
 	long phoneNo, zipCode;
 	List<Person> personList;
+	static Scanner sc;
 
 	public AddressBookService() {
 		this.personList = new ArrayList<Person>();
@@ -22,8 +24,17 @@ public class AddressBookService implements IPerson {
 
 	public void addPerson() {
 		System.out.println("-------------- Add New Contact --------------");
-		System.out.print("Enter First Name : ");
-		firstName = InputUtil.getStringValue();
+		int i = 0;
+		sc = new Scanner(System.in);
+		while (i == 0) {
+			System.out.print("Enter First Name : ");
+			firstName = sc.nextLine();
+			if (checkExists(firstName)) {
+				System.out.println("Person Name Already Exists!!");
+			}else {
+				i = 1;
+			}
+		}
 		System.out.print("Enter Last Name : ");
 		lastName = InputUtil.getStringValue();
 		System.out.print("Enter email : ");
@@ -45,6 +56,9 @@ public class AddressBookService implements IPerson {
 
 	public void editPerson() {
 		System.out.println("-------------- Edit Contact --------------");
+		int i = 0;
+		sc = new Scanner(System.in);
+		
 		if (personList.isEmpty()) {
 			System.out.println("No Records To edit!!!");
 		} else {
@@ -66,8 +80,17 @@ public class AddressBookService implements IPerson {
 
 				switch (choice) {
 				case 1:
-					System.out.print("Enter new Firstname : ");
-					firstName = InputUtil.getStringValue();
+//					System.out.print("Enter new Firstname : ");
+//					firstName = InputUtil.getStringValue();
+					while (i == 0) {
+						System.out.print("Enter First Name : ");
+						firstName = sc.nextLine();
+						if (checkExists(firstName)) {
+							System.out.println("Person Name Already Exists!!");
+						}else {
+							i = 1;
+						}
+					}
 					personList.get(id).setFname(firstName);
 					break;
 				case 2:
@@ -135,6 +158,11 @@ public class AddressBookService implements IPerson {
 		}
 		
 	}
+	
+	public boolean checkExists(String firstName) {
+		int flag = personList.stream().anyMatch(p -> p.getFname().equalsIgnoreCase(firstName)) ? 1 : 0;
+        return flag == 1;
+    }
 
 	public void showAllContacts() {
 		System.out.println("-------------- Show All Contacts --------------");
