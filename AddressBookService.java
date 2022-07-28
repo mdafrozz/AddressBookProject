@@ -10,7 +10,8 @@ import java.util.List;
  * @author MD_AFROZ
  *
  */
-public class AddressBookService {
+public class AddressBookService implements IPerson {
+
 	String firstName, lastName, email, address, city, state;
 	long phoneNo, zipCode;
 	List<Person> personList;
@@ -40,10 +41,9 @@ public class AddressBookService {
 
 		personList.add(new Person(firstName, lastName, email, address, city, state, phoneNo, zipCode));
 		System.out.println("Contact added successfully...");
-		System.out.println("<------------------------------------------------------->");
 	}
 
-	public void editRecord() {
+	public void editPerson() {
 		System.out.println("-------------- Edit Contact --------------");
 		if (personList.isEmpty()) {
 			System.out.println("No Records To edit!!!");
@@ -116,8 +116,24 @@ public class AddressBookService {
 				System.out.println("Contact is updated successfully.!!!");
 			}
 		}
-		System.out.println("<------------------------------------------------------->");
 
+	}
+	
+	public void deletePerson() {
+		System.out.println("-------------- Delete Contact --------------");
+		if (personList.isEmpty()) {
+			System.out.println("No Records To delete!!!");
+		} else {
+			for (Person person : personList) {
+				System.out.println("ID: #" + personList.indexOf(person) + " : " + person);
+			}
+
+			System.out.print("\nEnter #ID to delete contact : ");
+			int id = InputUtil.getIntValue();
+			personList.remove(id);
+			System.out.println("Contact is deleted successfully.........!!!!!!");
+		}
+		
 	}
 
 	public void showAllContacts() {
@@ -129,6 +145,6 @@ public class AddressBookService {
 				System.out.println(person);
 			}
 		}
-		System.out.println("<------------------------------------------------------->");
 	}
+
 }

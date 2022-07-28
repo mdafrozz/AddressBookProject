@@ -10,7 +10,8 @@ import java.util.Scanner;
  *
  */
 public class AddressBookMain {
-static Scanner sc;
+
+	static Scanner sc;
 	
 	public static void main(String[] args) {
 		System.out.println("************ Welcome to Address Book System ************");
@@ -20,8 +21,9 @@ static Scanner sc;
 		boolean exit = false;
 		sc = new Scanner(System.in);
 		while (!exit) {
+			System.out.println("<----------------------------------------------------------------->");
 			System.out.println(
-					"1.Create Contact \t2.Show Contacts \t3.Update Contact \t0.Quit");
+					"1.Create Contact \t2.Show Contacts \t3.Update Contact \t4.Delete Contact \t0.Quit");
 			System.out.println("---------- Enter your option ----------------- ");
 			int choice = sc.nextInt();
 			
@@ -33,7 +35,10 @@ static Scanner sc;
 				service.showAllContacts();
 				break;
 			case 3:
-				service.editRecord();
+				service.editPerson();
+				break;
+			case 4:
+				service.deletePerson();
 				break;
 			case 0:
 				exit = true;
@@ -44,6 +49,6 @@ static Scanner sc;
 				System.out.println("<------------------------------------------------------->");
 			}
 		}
-
+	
 	}
 }
