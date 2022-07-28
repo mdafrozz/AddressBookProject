@@ -8,5 +8,7 @@ package com.bridgelabz.java;
  *
  */
 public interface IPerson {
-	void addPerson();
+	public void addPerson();
+	public void showAllContacts();
+	public void editRecord();
 }

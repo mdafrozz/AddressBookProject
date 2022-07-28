@@ -8,13 +8,14 @@ package com.bridgelabz.java;
  *
  */
 public class Person {
-	private String fname, lname, address, city, state;
+	private String fname, lname, email, address, city, state;
 	private long phone, zip;
 
-	public Person(String fname, String lname, String email, String address, String state, String city, long phone, long zip) {
-		super();
+	public Person(String fname, String lname, String email, String address, String city, String state, long phone,
+			long zip) {
 		this.fname = fname;
 		this.lname = lname;
+		this.email = email;
 		this.address = address;
 		this.city = city;
 		this.state = state;
@@ -36,6 +37,14 @@ public class Person {
 
 	public void setLname(String lname) {
 		this.lname = lname;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getAddress() {
@@ -80,7 +89,7 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Person [fname=" + fname + ", lname=" + lname + ", address=" + address + ", city=" + city + ", state="
-				+ state + ", phone=" + phone + ", zip=" + zip + "]";
+		return "Person [fname=" + fname + ", lname=" + lname + ", email=" + email + ", address=" + address + ", city="
+				+ city + ", state=" + state + ", phone=" + phone + ", zip=" + zip + "]";
 	}
 }
