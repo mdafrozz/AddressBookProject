@@ -12,21 +12,20 @@ import java.util.Scanner;
 public class AddressBookMain {
 
 	static Scanner sc;
-	
+
 	public static void main(String[] args) {
 		System.out.println("************ Welcome to Address Book System ************");
-		
+
 		AddressBookService service = new AddressBookService();
 
 		boolean exit = false;
 		sc = new Scanner(System.in);
-		while (!exit) {
+		while (!exit) { // UC5 - Add multiple contacts
 			System.out.println("<----------------------------------------------------------------->");
-			System.out.println(
-					"1.Create Contact \t2.Show Contacts \t3.Update Contact \t4.Delete Contact \t0.Quit");
+			System.out.println("1.Create Contact \t2.Show Contacts \t3.Update Contact \t4.Delete Contact \t0.Quit");
 			System.out.println("---------- Enter your option ----------------- ");
 			int choice = sc.nextInt();
-			
+
 			switch (choice) {
 			case 1:
 				service.addPerson();
@@ -49,6 +48,6 @@ public class AddressBookMain {
 				System.out.println("<------------------------------------------------------->");
 			}
 		}
-	
+
 	}
 }
