@@ -31,7 +31,7 @@ public class AddressBookService implements IPerson {
 			firstName = sc.nextLine();
 			if (checkExists(firstName)) {
 				System.out.println("Person Name Already Exists!!");
-			}else {
+			} else {
 				i = 1;
 			}
 		}
@@ -58,7 +58,7 @@ public class AddressBookService implements IPerson {
 		System.out.println("-------------- Edit Contact --------------");
 		int i = 0;
 		sc = new Scanner(System.in);
-		
+
 		if (personList.isEmpty()) {
 			System.out.println("No Records To edit!!!");
 		} else {
@@ -80,14 +80,12 @@ public class AddressBookService implements IPerson {
 
 				switch (choice) {
 				case 1:
-//					System.out.print("Enter new Firstname : ");
-//					firstName = InputUtil.getStringValue();
 					while (i == 0) {
 						System.out.print("Enter First Name : ");
 						firstName = sc.nextLine();
 						if (checkExists(firstName)) {
 							System.out.println("Person Name Already Exists!!");
-						}else {
+						} else {
 							i = 1;
 						}
 					}
@@ -141,7 +139,7 @@ public class AddressBookService implements IPerson {
 		}
 
 	}
-	
+
 	public void deletePerson() {
 		System.out.println("-------------- Delete Contact --------------");
 		if (personList.isEmpty()) {
@@ -156,13 +154,43 @@ public class AddressBookService implements IPerson {
 			personList.remove(id);
 			System.out.println("Contact is deleted successfully.........!!!!!!");
 		}
-		
+
 	}
-	
+
 	public boolean checkExists(String firstName) {
 		int flag = personList.stream().anyMatch(p -> p.getFname().equalsIgnoreCase(firstName)) ? 1 : 0;
-        return flag == 1;
-    }
+		return flag == 1;
+	}
+
+	public void searchInContacts() {
+		int i = 0;
+		SearchByStateOrCity search = new SearchByStateOrCity();
+		if (personList.isEmpty()) {
+			System.out.println("No Records To search!!!");
+		} else {
+			while (i == 0) {
+				System.out.println("----------------Search by City or State--------------");
+				System.out.println("1.Search By City \t2.Search By State \t3.Back");
+				System.out.println("------------------Choose Your Option-----------------");
+				int choice = InputUtil.getIntValue();
+
+				switch (choice) {
+				case 1:
+					search.searchByCity(personList);
+					break;
+				case 2:
+					search.searchByState(personList);
+					break;
+				case 3:
+					i = 1;
+					System.out.println("Search Quit");
+					break;
+				default:
+					System.out.println("Please Enter Valid Option.!!!");
+				}
+			}
+		}
+	}
 
 	public void showAllContacts() {
 		System.out.println("-------------- Show All Contacts --------------");
@@ -174,5 +202,4 @@ public class AddressBookService implements IPerson {
 			}
 		}
 	}
-
 }
