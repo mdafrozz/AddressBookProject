@@ -11,8 +11,6 @@ import java.util.Scanner;
  *
  */
 public class AddressBookMain {
-
-
 	static Scanner sc;
 
 	public static void main(String[] args) {
@@ -28,7 +26,7 @@ public class AddressBookMain {
 		addressBooks.put("Business", businessAddressBook);
 
 		int userOption = 0;
-		while (userOption != 5) {
+		while (userOption != 7) {
 			userOption = getOptions(sc);
 			String inputAddressBook = "";
 			if (userOption != 2) {
@@ -61,7 +59,10 @@ public class AddressBookMain {
 					ab.searchInContacts();
 					break;
 				case 6:
-					userOption = 5;
+					ab.viewContactsByCityOrState();
+					break;
+				case 7:
+					userOption = 7;
 					System.out.println("**********Thank you.....!!!*********");
 					break;
 				default:
@@ -77,7 +78,7 @@ public class AddressBookMain {
 
 	public static int getOptions(Scanner sc) {
 		System.out.println("**********************Select Menu**********************");
-		System.out.println("1.Add Contact \t2.Show Contacts \t3.Edit Contact \t4.Delete Contact \t5.Search By City or State \t6.Exit");
+		System.out.println("1.Add Contact \t2.Show Contacts \t3.Edit Contact \t4.Delete Contact \t5.Search By City or State \t6.View By City or State \t7.Exit");
 		System.out.println("---------- Enter Your Choice ----------");
 		int option = sc.nextInt();
 		return option;

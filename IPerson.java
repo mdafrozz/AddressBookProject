@@ -13,4 +13,5 @@ public interface IPerson {
 	public void editPerson();
 	public void deletePerson();
 	public void searchInContacts();
+	public void viewContactsByCityOrState();
 }
