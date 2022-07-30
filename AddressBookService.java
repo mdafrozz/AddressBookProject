@@ -4,6 +4,8 @@
 package com.bridgelabz.java;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,6 +18,7 @@ public class AddressBookService implements IPerson {
 	long phoneNo, zipCode;
 	List<Person> personList;
 	static Scanner sc;
+	public HashMap<String, Person> addressBook = new HashMap<>();
 
 	public AddressBookService() {
 		this.personList = new ArrayList<Person>();
@@ -224,10 +227,12 @@ public class AddressBookService implements IPerson {
 		if (personList.isEmpty()) {
 			System.out.println("No Records To show!!!");
 		} else {
+			Collections.sort(personList, (p1, p2) -> p1.getFname().compareTo(p2.getFname()));
 			for (Person person : personList) {
 				System.out.println(person);
 			}
 		}
 	}
+
 
 }
