@@ -14,4 +14,5 @@ public interface IPerson {
 	public void deletePerson();
 	public void searchInContacts();
 	public void viewContactsByCityOrState();
+	public void sortAddressBookCityStateZip();
 }
