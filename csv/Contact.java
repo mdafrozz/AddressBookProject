@@ -10,6 +10,7 @@ import java.util.Scanner;
  *
  */
 public class Contact {
+
 	public String firstName, lastName, address, city, state, zipcode, phoneNo, email;
 
 	public String getFirstName() {
@@ -106,6 +107,13 @@ public class Contact {
 	public String showContactCSV() {
 		return firstName + "," + lastName + "," + address + "," + city + "," + state + "," + zipcode + "," + phoneNo
 				+ "," + email;
+	}
+
+	@Override
+	public String toString() {
+		return "\"Contact [First Name " + firstName + ", Last Name = " + lastName + "," + " Address = " + address
+				+ ", City = " + city + ", State = " + state + ", ZipCode = " + zipcode + ", Phone = " + phoneNo
+				+ ", Email = " + email + "]";
 	}
 
 }
